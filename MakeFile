@@ -1,0 +1,40 @@
+# Makefile for Django project
+
+# Default target (run when you just type `make`)
+help:
+	@echo "Available commands:"
+	@echo "  make run       - Start the Django development server"
+	@echo "  make migrate   - Apply database migrations"
+	@echo "  make superuser - Create a superuser"
+	@echo "  make test      - Run tests"
+	@echo "  make shell     - Open Django shell"
+	@echo "  make clean     - Clean up temporary files"
+
+# Start the Django development server
+run:
+	python manage.py runserver
+
+# Apply database migrations
+migrate:
+	python manage.py migrate
+
+# Create a superuser
+superuser:
+	python manage.py createsuperuser
+
+# Run tests
+test:
+	python manage.py test
+
+# Open Django shell
+shell:
+	python manage.py shell
+
+# Clean up temporary files (e.g., pycache, logs)
+clean:
+	find . -type d -name "__pycache__" -exec rm -rf {} +
+	find . -type f -name "*.pyc" -delete
+	@echo "Cleaned up temporary files!"
+
+# Phony targets (targets that are not files)
+.PHONY: help run migrate superuser test shell clean
